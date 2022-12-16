@@ -32,6 +32,35 @@ class Heap{
         }
     }
 
+    // Deletion in Max Heap
+    void deleteHeap(){
+
+        // step 1 -> put the last element into first index
+        arr[1] = arr[size];
+
+        // step 2 -> remove the last element 
+        size--;
+
+        // propagate the root element into its correct position
+
+        int index = 1;
+
+        while(index < size){
+            int leftIndex = 2*index;
+            int rightIndex = 2*index+1;
+
+            if(leftIndex < size && arr[index] < arr[leftIndex]){
+                swap(arr[index], arr[leftIndex]);
+                index = leftIndex;
+            }
+
+            else if(rightIndex < size && arr[index] < arr[rightIndex]){
+                swap(arr[index], arr[rightIndex]);
+                index = rightIndex;
+            }
+            else return;
+        }
+    }
 
     // print function
     void print(){
@@ -41,6 +70,28 @@ class Heap{
         }cout<<endl;
     }
 };
+
+
+void heapify(int arr[], int size, int i){
+
+    int largest = i;
+    int left = 2*i;
+    int right = 2*i+1;
+
+    if(left < size && arr[largest] < arr[left]){
+        largest = left;
+    }
+
+    if(right < size && arr[largest] < arr[right]){
+        largest = right;
+    }
+
+    if(largest != i){
+        swap(arr[largest], arr[i]);
+        heapify(arr, size, largest);
+    }
+}
+
 int main(){
 
     // create a heap 
@@ -54,6 +105,22 @@ int main(){
 
     cout<<"Printing the Max Heap values "<<endl;
     h.print();
+
+    h.deleteHeap();
+    h.print();
+
+    int arr[8] = {-1,30,58,22,19,53,99,100};
+    int n = 8;
+
+    for(int i=n/2; i>0; i--){
+        heapify(arr, n, i);
+    }
+
+    cout<<"Printing the Heap using Heapify "<<endl;
+
+    for(int i=1; i<n; i++){
+        cout<<arr[i]<<" ";
+    }cout<<endl;
 
     return 0;
 }
