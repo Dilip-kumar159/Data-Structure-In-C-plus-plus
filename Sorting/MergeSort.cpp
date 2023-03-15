@@ -5,7 +5,7 @@ using namespace std;
 
 void merge(int arr[], int start, int mid, int end){
 
-    // temproray array to store the sorted elements
+    // temproary array to store the sorted elements
     vector<int> temp;
 
     int left = start;
