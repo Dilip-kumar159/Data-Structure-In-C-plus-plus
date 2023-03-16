@@ -24,7 +24,6 @@ void merge(int arr[], int start, int mid, int end){
     while(right <= end) temp.push_back(arr[right++]);
 
     // now temp array contains sorted elements need to copy to the main array
-
     for(int i=start; i<=end; i++){
         arr[i] = temp[i-start];
     }
