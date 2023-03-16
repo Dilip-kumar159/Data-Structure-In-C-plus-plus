@@ -1,0 +1,4 @@
+Before Applying the Merge Sort 
+9 3 2 1 10 
+After Applying the Merge Sort 
+1 2 3 9 10 

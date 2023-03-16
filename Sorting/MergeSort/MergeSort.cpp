@@ -25,7 +25,7 @@ void merge(int arr[], int start, int mid, int end){
 
     // now temp array contains sorted elements need to copy to the main array
 
-    for(int i=start; i<= end; i++){
+    for(int i=start; i<=end; i++){
         arr[i] = temp[i-start];
     }
 
@@ -57,13 +57,14 @@ void display(int *arr, int n){
 }
 int main(){
 
-    cout<<"Enter how many number of elements are required \n";
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+
     int n;
     cin>>n;
     
     int arr[20];
 
-    cout<<"Enter the Array elements in unsorted way \n";
     for(int i=0; i<n; i++){
         cin>>arr[i];
     }
