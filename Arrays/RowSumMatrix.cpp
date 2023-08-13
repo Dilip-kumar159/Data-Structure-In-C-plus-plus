@@ -1,4 +1,5 @@
 #include<iostream>
+#include<LIMITS>
 
 using namespace std;
 
@@ -28,6 +29,30 @@ void printRowSum(int arr[][3]){
     }
 }
 
+void largestRowSum(int arr[][3]){
+
+    cout<<"\nLargest Row Sum\n";
+
+    int largestRowSum = INT_MIN, showRow = 0;
+
+    for(int i=0; i<3; i++){
+
+        int rowSum = 0;
+
+        for(int j=0; j<3; j++){
+
+            rowSum+= arr[i][j];
+        }
+            if(largestRowSum < rowSum){
+                showRow = i;
+                largestRowSum = rowSum;
+            }
+    }
+
+    cout<<"Largest Row Sum is : "<<largestRowSum<<endl;
+    cout<<showRow<<" th row is holding largest Row Sum \n";
+}
+
 void printColSum(int arr[][3]){
 
     cout<<"\nCol Sum\n";
@@ -41,6 +66,28 @@ void printColSum(int arr[][3]){
             colSum += arr[row][col];
         }
         cout<<col<<" th row "<<colSum<<endl;
+    }
+}
+
+void wavePrint(int arr[][3]){
+
+    cout<<"\n Wave Print \n";
+
+    for(int col=0; col<3; col++){
+
+        if(col & 1){
+
+            // odd col
+            for(int row=2; row>=0; row--){
+                cout<<arr[row][col]<<" ";
+            }
+        }
+        else{
+            // even col
+            for(int row=0; row<3; row++){
+                cout<<arr[row][col]<<" ";
+            }
+        }
     }
 }
 int main(){
@@ -64,6 +111,12 @@ int main(){
 
     // colSum
     printColSum(matrix);
+
+    // largest RowSum
+    largestRowSum(matrix);
+
+    //Wave Print
+    wavePrint(matrix);
 
     return 0;
 }
